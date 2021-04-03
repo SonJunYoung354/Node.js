@@ -35,6 +35,8 @@ fs.access('C:/Users/준영/Desktop/Node.js/folder', fs.constants.F_OK | fs.const
                         throw err;
                     }
                     console.log('이름 바꾸기 성공');
+
+                    //파일 읽기 
                     let data = fs.readFileSync('C:/Users/준영/Desktop/Node.js/folder/newfile1.txt');
                     console.log(data.toString());
                 });

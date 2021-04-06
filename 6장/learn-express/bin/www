@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Module dependencies.
+ * 모듈을 가져옴
  */
 
 var app = require('../app');
@@ -9,20 +9,24 @@ var debug = require('debug')('learn-express:server');
 var http = require('http');
 
 /**
- * Get port from environment and store in Express.
+ * app.set()으로 서버가 실행될 포트 설정. process.env 객체에 port 속성이 있으면 그값을 사용
+ * 없으면 3000번
+ * app set(키,값)을 사용해서 데이터를 저장하고 app.get(키)로 값을 가져올수 있음.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
- * Create HTTP server.
+ * http.creatServer에 불러온 app 모듈을 넣어줌. 
+ * app 모듈이 creatSserver 메서드의 콜백 함수 역활을 함.
  */
 
 var server = http.createServer(app);
 
 /**
- * Listen on provided port, on all network interfaces.
+ * 포트를 연결하고 서버를 실행.
+ * 익스프레스는 그저 콜백 함수 부분을 다르게 만듬.
  */
 
 server.listen(port);

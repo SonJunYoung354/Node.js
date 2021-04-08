@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define( 'user', {
+    return sequelize.define('user', {
         name: {
             type: DataTypes.STRING(20),
             allowNull: false,
@@ -10,12 +10,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
         },
-        married:{
+        married: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        comment:{
-            type: DataTypes.DATE,
+        comment: {
+            type: DataTypes.TEXT,
             allowNull: true,
         },
         created_at: {

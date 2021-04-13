@@ -4,10 +4,10 @@ var path = require('path');
 var firebase = require('firebase');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var firebaseRouter = require('./routes/firebase/service');
-var indexRouter = require('./routes/index');
+var mainRouter = require('./routes/main');
 var usersRouter = require('./routes/users');
-
+var indexRouter = require('./routes/index');
+var testRouter = require('./routes/test');
 var app = express();
 
 // view engine setup
@@ -20,11 +20,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/', mainRouter);
 app.use('/users', usersRouter);
-app.use('/firebase/service', firebaseRouter);
-
-
+app.use('/index', indexRouter);
+app.use('/test', testRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

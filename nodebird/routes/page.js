@@ -15,6 +15,16 @@ router.get('/join', isNotLoggedIn, (req, res) => {
     joinError: req.flash('joinError'),
   });
 });
+router.get('/:id/unfollowee', isLoggedIn, async ( req, res, next) => {
+  try {
+      const user = await User.destroy({ where: { id: req.user.id } });
+      res.send('ss');
+  } catch (error) {
+      console.error(error);
+      next(error);
+  }
+});
+
 
 router.get('/', (req, res, next) => {
   Post.findAll({

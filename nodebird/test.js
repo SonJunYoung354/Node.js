@@ -1,18 +1,40 @@
-const express = require('express');
-const { isLoggedIn } = require('./middlewares');
-const { User } = require('../models');
-
-const router = express.Router();
-
-router.post('/:id/follow', isLoggedIn, async ( req, res, next) => {
-  try {
-    const user =await User.findOne({ where: { id: req.user.id } });
-    await user.addFollowing(parseInt(req.params.id, 10));
-    res.send('success');
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-});
-
-module.exports = router;
+document.querySelectorAll('.like').forEach(function (tag) {
+    tag.addEventListener('click', function () {
+      var isLoggedIn = document.querySelector('#my-id');
+      var twitID = tag.parentNode.querySelector('.twit-id').value;
+      if (isLoggedIn) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+              if (xhr.status === 200) {
+                location.reload();
+              } else {
+                console.error(xhr.responseText);
+              }
+            };
+            xhr.open('POST', '/post/' + twitID + '/like');
+            xhr.send();
+          }
+        }
+      }
+    });
+  })
+  document.querySelectorAll('.unlike').forEach(function (tag) {
+    tag.addEventListener('click', function () {
+      var isLoggedIn = document.querySelector('#my-id');
+      var twitID = tag.parentNode.querySelector('.twit-id').value;
+      if (isLoggedIn) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+              if (xhr.status === 200) {
+                location.reload();
+              } else {
+                console.error(xhr.responseText);
+              }
+            };
+            xhr.open('DELETE', '/post/' + twitID + '/like');
+            xhr.send();
+          }
+        }
+      }
+    });
+  })

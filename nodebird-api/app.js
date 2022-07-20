@@ -38,7 +38,7 @@ app.use(session({
 
 app.use(flash());
 app.use(passport.initialize());
-app.use(passport.seesion());
+app.use(passport.session());
 
 app.use('/auth', authRouter);
 app.use('/', indexRouter);

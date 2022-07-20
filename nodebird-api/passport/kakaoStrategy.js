@@ -1,8 +1,9 @@
+const passport = require('passport');
 const KakaoStrategy = require('passport-kakao').Strategy;
 
 const { User } = require('../models');
 
-module.exports = (passport) => {
+module.exports = () => {
   passport.use(new KakaoStrategy({
     clientID: process.env.KAKAO_ID,
     callbackURL: '/auth/kakao/callback',

@@ -1,3 +1,8 @@
+// node.js
+// gitkraken
+//test
+
+
 module.exports = (sequelize, DataTypes) => (
     sequelize.define('doomain', { 
         host: {
